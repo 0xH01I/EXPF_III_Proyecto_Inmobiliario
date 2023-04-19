@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Proyecto_EFSTRIII.Models.Venta>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Ventas</h2>
+
+<p>
+    @Html.ActionLink("Agregar Venta", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrpCondicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripFormaPago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripTipoInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalGeneral)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaVenta)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idInmueble)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descrpCondicion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripFormaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripTipoInmueble)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totalGeneral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaVenta)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.idVenta }, new { @class = "btn btn-primary" })
+                
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    @for (int i = 0; i < ViewBag.numeroPaginas; i++)
+    {
+        @Html.ActionLink(
+            (i + 1).ToString(), "Index", new { pagina = i },
+            new { @class = "btn btn-dark" });
+    }
+</div>

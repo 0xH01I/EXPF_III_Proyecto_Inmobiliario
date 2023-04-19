@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Proyecto_EFSTRIII.Models.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Clientes</h2>
+
+<p>
+    @Html.ActionLink("Agregar Cliente", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccionCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreDistrito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonoCliente)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccionCliente)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreDistrito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoCliente)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.idCliente }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @for (int i = 0; i < ViewBag.numeroPaginas; i++)
+    {
+        @Html.ActionLink(
+            (i + 1).ToString(), "Index", new { pagina = i },
+            new { @class = "btn btn-dark" });
+    }
+</div>

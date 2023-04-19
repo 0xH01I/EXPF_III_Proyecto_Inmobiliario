@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Proyecto_EFSTRIII.Models.Inmueble>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Inmuebles</h2>
+
+<p>
+    @Html.ActionLink("Agregar Inmueble", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ubiInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoInmueble)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreDistrito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idInmueble)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descInmueble)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ubiInmueble)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.costoInmueble)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreDistrito)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.idInmueble }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @for (int i = 0; i < ViewBag.numeroPaginas; i++)
+    {
+        @Html.ActionLink(
+            (i + 1).ToString(), "Index", new { pagina = i },
+            new { @class = "btn btn-dark" });
+    }
+</div>
